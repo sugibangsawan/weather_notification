@@ -147,6 +147,10 @@ activemq-data/
 # SageMath parsed files
 *.sage.py
 
+# Compiled Core Location helper
+.location-helper
+.location-helper.app
+
 # Environments
 .env
 .envrc
