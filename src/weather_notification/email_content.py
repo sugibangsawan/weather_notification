@@ -17,7 +17,8 @@ def plain_body(forecast: RainForecast, summary: str) -> str:
     highlights = _highlights(forecast)
     lines = [
         f"Rain forecast — {place or 'Unknown location'}",
-        f"{loc.latitude:.4f}, {loc.longitude:.4f}  ·  "
+        f"{loc.latitude:.6f}, {loc.longitude:.6f}  ·  "
+        f"{'GPS' if loc.source.startswith('gps') else 'IP location'}  ·  "
         f"next {len(forecast.hours)} hours  ·  {forecast.timezone}",
         "",
         "Highlights",
@@ -68,7 +69,7 @@ def html_body(forecast: RainForecast, summary: str) -> str:
                 <div style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;opacity:0.85;">48-hour rain forecast</div>
                 <div style="font-size:26px;font-weight:700;margin-top:6px;">{escape(place)}</div>
                 <div style="font-size:13px;margin-top:8px;opacity:0.9;">
-                  {loc.latitude:.4f}, {loc.longitude:.4f} · {escape(forecast.timezone)} · next {len(forecast.hours)} hours
+                  {loc.latitude:.6f}, {loc.longitude:.6f} · {'GPS' if loc.source.startswith('gps') else 'IP location'} · {escape(forecast.timezone)} · next {len(forecast.hours)} hours
                 </div>
               </td>
             </tr>

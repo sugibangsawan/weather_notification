@@ -150,6 +150,7 @@ activemq-data/
 # Compiled Core Location helper
 .location-helper
 .location-helper.app
+Weather Notification.app
 
 # Environments
 .env

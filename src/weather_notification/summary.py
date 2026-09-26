@@ -50,7 +50,8 @@ def summarize_forecast(forecast: RainForecast) -> str:
         for hour in forecast.hours
     ]
     prompt = (
-        f"Location: {loc.city}, {loc.region}, {loc.country} ({forecast.timezone})\n"
+        f"Location: {loc.city}, {loc.region}, {loc.country} "
+        f"({loc.latitude:.6f}, {loc.longitude:.6f}, {forecast.timezone})\n"
         + "\n".join(facts)
         + f"\nHourly rain forecast for the next {len(forecast.hours)} hours:\n"
         + "\n".join(lines)

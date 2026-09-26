@@ -16,8 +16,9 @@ def print_forecast(forecast: RainForecast, summary: str | None = None) -> None:
     header = Text()
     header.append("Rain forecast\n", style="bold white")
     header.append(place or "Unknown location", style="bold cyan")
+    source = "GPS" if loc.source.startswith("gps") else "IP location"
     header.append(
-        f"\n{loc.latitude:.2f}, {loc.longitude:.2f}  ·  "
+        f"\n{loc.latitude:.6f}, {loc.longitude:.6f}  ·  {source}  ·  "
         f"next {len(forecast.hours)} hours  ·  {forecast.timezone}",
         style="dim",
     )
